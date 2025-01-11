@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Expense_Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .link-icon {
+        height: 16px;
+    }
+</style>
+<style>
+    .progress-bar {
+        width: 100% !important;
+        background-color: #f3f3f3 !important;
+        border-radius: 5px !important;
+        height: 20px !important;
+    }
+
+    .progress {
+        height: 100% !important;
+        width: 70%;
+        background-color: #4caf50 !important;
+        border-radius: 5px !important;
+        text-align: center !important;
+        line-height: 20px !important; /* Aligns text in the middle */
+        color: white !important;
+        justify-content: center;
+    }
+</style>
+<div class="search-box p-4 bg-white rounded mb-3 box-shadow">
+    <form class="forms-sample">
+        <div class="row align-items-center">
+            <div class="col-lg-2">
+                <h5>Expense Report</h5>
+            </div>
+            @*<div class="col-lg-4 col-md-6">
+                    <input type="text" placeholder="Search by project name" class="form-control">
+                </div>*@
+            <div class="col-lg-4 col-md-6">
+                <select class="form-select form-select-lg">
+                    <option>--Select Project--</option>
+                    <option value="1" selected>Project1</option>
+                    <option value="2">Project2</option>
+                    <option value="3">Project3</option>
+                </select>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <select class="form-select form-select-lg" id="expenseDropdown">
+                    <option selected>--Select head--</option>
+                    <option value="1">Project Expenses</option>
+                    <option value="2">Equipment Expenses</option>
+                    <option value="3">Miscellaneous Expenses</option>
+                </select>
+            </div>
+            <div class="col-lg-2 col-md-6 float-end text-center">
+                <img src="~/assets/gif/pdf (1).png" height="30" />
+                <img src="~/assets/gif/office365.png" height="30" />
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row" id="expenseDetails" hidden>
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="dataTableExample">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Date</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>10/02/2004</td>
+                                <td>Item 1</td>
+                                <td>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero cupiditate, distinctio doloribus molestias cum possimus nam nemo nisi excepturi repudiandae ea consequuntur eveniet sunt voluptate totam! Architecto adipisci explicabo magnam.
+                                </td>
+                                <td>15000</td>
+                                <td><a href="#document">Receipt</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
+<script>
+    document.getElementById('expenseDropdown').onchange = function () {
+        var selectedValue = this.value;
+        var expenseDetailsDiv = document.getElementById('expenseDetails');
+
+        if (selectedValue) {
+            expenseDetailsDiv.removeAttribute('hidden');
+        } else {
+            expenseDetailsDiv.setAttribute('hidden', true);
+        }
+    };
+</script>
+
+
+
+
+

@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "Min_Of_Meeting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+   
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: #444;
+        line-height: 13px;
+    }
+</style>
+<nav class="page-breadcrumb d-flex align-items-center justify-content-between">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="popup-ads.html">Minute of meeting</a></li>
+        <li class="breadcrumb-item active" aria-current="page">/Add Meeting</li>
+    </ol>
+    <a href="/Admin/Meeting_Report" class="btn btn-primary"><i class="link-icon" data-feather="arrow-left"></i> Back To List</a>
+</nav>
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+
+        <div class="card">
+            <div class="card-body">
+                <form id="formDataMeet" method="post">
+
+                    <div class="row gutters">
+                        <div class="col-lg-4 mb-3 col-12">
+                            <div class="form-group">
+                                <label>Meating Type</label>
+                                <br />
+                                <input type="radio" name="meetingType" class="meetType" value="Online" checked>&nbsp;Online &nbsp; &nbsp;
+                                <input type="radio" name="meetingType" class="meetType" value="Offline">&nbsp;Offline &nbsp; &nbsp;
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-3 col-12">
+                            <div class="form-group">
+                                <label>Meeting Member:</label>
+                                <select class="form-control" name="meetFor" id="meetFor" multiple>
+                                    <option>Member 1</option>
+                                    <option>Member 2</option>
+                                    <option>Member 3</option>
+                                    <option>Member 4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-3 col-12" id="venueEle" style="display:none;">
+                            <div class="form-group">
+                                <label> Venue</label>
+                                <input type="text" class="form-control" name="venue" placeholder="Enter Venue ">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-3 col-12" id="meetingLinkContainer">
+                            <div class="form-group">
+                                <label>Meeting Link</label>
+                                <input type="text" class="form-control" name="meetinglink" placeholder="Enter meeting link">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-lg-4 mb-3 col-12">
+                            <div class="form-group">
+                                <label>Meeting Title</label>
+                                <input type="text" class="form-control" id="meetingtitle" name="meetingtitle" placeholder="Enter Meeting Title">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-3 col-12">
+                            <div class="form-group">
+                                <label> Meeting Time</label>
+                                <input type="datetime-local" class="form-control" id="meetingdatetime" name="meetingdatetime" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" placeholder="Enter Meeting Time">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-3 col-12">
+                            <div class="form-group">
+                                <label> Attachment</label>
+                                <input class="form-control" type="file" id="upload">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="keypoints-container">
+                        <div class="row gutters keyItems" style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div class="col-sm-2">
+                                <label style="display: block;font-weight:bold; margin-bottom: 5px;"> Key Point 1 </label>
+                            </div>
+                            <div class="col-sm-6 col-12">
+
+                                <div class="form-group m-0">
+                                    <input type="text" class="form-control keypointDetails" placeholder="Enter Key Points">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-3 col-12">
+                                <label style="display: block;font-weight:bold; margin-bottom: 5px;"></label>
+                                <div class="form-group m-0">
+                                    <a href="#" id="add-btn" title="Add Another Key"><i class="fa-solid fa-circle-plus"></i> Add Another Key</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center">
+                        <button id="createMeetingBtn" type="submit" class="btn btn-primary">Create Meeting</button>
+
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-12 grid-margin stretch-card">
+
+        <div class="card my-4 p-3">
+            <div class="card-body">
+                <h4 class="mb-4">Meeting List</h4>
+                <div class="table-container">
+
+                    <div class="table-responsive">
+                        <table id="dataTableExample" class="table custom-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Meeting Name</th>
+                                    <th>Meeting Mode</th>
+                                    <th>Venue</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Pardhan Mantri Awaas Yojana (PMAY-G)</td>
+                                    <td>Offile</td>
+                                    <td>Block A, Hall-120, UK</td>
+                                    <td>Pending</td>
+                                    <td>
+                                        <ul class="d-flex list-unstyled justify-content-evenly">
+                                            <li>
+                                                <a href="/admin/MeetingConclusion"><i class="fa-solid fa-circle-plus" style="color:orange" title="Add Conclusion"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa-solid fa-pencil"></i></a></li>
+                                        </ul>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#tbl_Member').DataTable();
+            $('#basicExample').DataTable();
+            $("#meetFor").select2({
+                placeholder: "--Select Member--"
+            })
+            $('#select_all').on('click', function () {
+                const isChecked = $(this).prop("checked");
+                const nodes = $('#tblMem').DataTable().rows({ 'search': 'applied' }).nodes().to$();
+                nodes.find('input.selMember').prop("checked", isChecked);
+            });
+
+            $('#tblMem').on('change', 'input.selMember', function () {
+                const nodes = $('#tblMem').DataTable().rows({ 'search': 'applied' }).nodes().to$();
+                const allChecked = nodes.find('input.selMember:checked').length === nodes.find('input.selMember').length;
+                $('#select_all').prop('checked', allChecked);
+            });
+
+            let i = 1;
+            $("#add-btn").click(function () {
+                i++;
+                const inputField = `
+<div class="row gutters keyItems" style="display: flex; align-items: center; margin-bottom: 10px;">
+            <div class="col-sm-2 col-12"><label style="display: block;font-weight:bold; margin-bottom: 5px;">Key Point ${i}</label></div>
+
+            <div class="col-sm-6 col-12">
+                <div class="form-group m-0">
+                    <input type="text" class="form-control keypointDetails" placeholder="Enter Key Points">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <a href="#" class="remove-btn" title="Remove key"><i class="fa-solid fa-trash text-danger fs-5"></i></a>
+            </div>
+</div>`;
+                $("#keypoints-container").append(inputField);
+            });
+
+            $("#keypoints-container").on("click", ".remove-btn", function () {
+                $(this).parents(".keyItems").remove();
+                i--;
+            });
+
+            $(".meetType").change(function () {
+                $("#venueEle").toggle($(this).val() === "Offline");
+                $("#meetingLinkContainer").toggle($(this).val() == "Online");
+            });
+
+            $("#meetFor").change(function () {
+                const id = $(this).val();
+                const tabletype = $("#meetFor option:selected").attr("data-type");
+
+
+            });
+        });
+    </script>
+
+
+

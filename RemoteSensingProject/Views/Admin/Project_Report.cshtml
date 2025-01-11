@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Project_Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    svg {
+        height: 20px;
+    }
+</style>
+<div class="search-box p-4 bg-white rounded mb-3 box-shadow">
+    <form class="forms-sample">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <h5>Project Lists</h5>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <input type="text" placeholder="Search by project name" class="form-control">
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <select class="form-select form-select-lg">
+                    <option selected>Project Status</option>
+                    <option value="1">Work in Progress</option>
+                    <option value="2">Pending</option>
+                    <option value="3">Completed</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+            <h6 class="card-title mb-0">Projects</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="dataTableExample">
+                <thead>
+                    <tr>
+                        <th class="pt-0">#</th>
+                        <th class="pt-0">Assign Date</th>
+                        <th class="pt-0">Project Name</th>
+                        <th class="pt-0">Start Date</th>
+                        <th class="pt-0">Completion Date</th>
+                        <th class="pt-0">Project Manager</th>
+                        <th class="pt-0">Status</th>
+                        <th class="pt-0">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>01/01/2022</td>
+                        <td>India Stack Global</td>
+                        <td>01/01/2022</td>
+                        <td>26/04/2022</td>
+                        <td>Leonardo Payne</td>
+                        <td>
+                            <span class="badge bg-warning">Work in Progress</span>
+                        </td>
+                        <td class="text-center">
+                            <ul class="d-flex list-unstyled mb-0 justify-content-center">
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file-text" title="pdf"></i></a></li>
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file" title="excel"></i></a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>01/01/2022</td>
+                        <td>National Informatics Centre (NIC)</td>
+                        <td>01/01/2022</td>
+                        <td>26/04/2022</td>
+                        <td>Carl Henson</td>
+                        <td><span class="badge bg-info">Pending</span></td>
+                        <td class="text-center">
+                            <ul class="d-flex list-unstyled mb-0 justify-content-center">
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file-text" title="pdf"></i></a></li>
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file" title="excel"></i></a></li>
+
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>01/01/2022</td>
+                        <td>Ministry of Electronics and Information Technology</td>
+                        <td>01/05/2022</td>
+                        <td>10/09/2022</td>
+                        <td>Jensen Combs</td>
+                        <td><span class="badge bg-info">Pending</span></td>
+                        <td class="text-center">
+                            <ul class="d-flex list-unstyled mb-0 justify-content-center">
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file-text" title="pdf"></i></a></li>
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file" title="excel"></i></a></li>
+
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>01/01/2022</td>
+                        <td>INSPIRE-MANAK</td>
+                        <td>01/01/2022</td>
+                        <td>31/11/2022</td>
+                        <td>Amiah Burton</td>
+                        <td>
+                            <span class="badge bg-warning">Work in Progress</span>
+                        </td>
+                        <td class="text-center">
+                            <ul class="d-flex list-unstyled mb-0 justify-content-center">
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file-text" title="pdf"></i></a></li>
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file" title="excel"></i></a></li>
+
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>01/01/2022</td>
+                        <td>
+                            PPP Based Slum
+                            Rehabilitaiton in Junavadaj area
+                        </td>
+                        <td>01/01/2022</td>
+                        <td>31/12/2022</td>
+                        <td>Yaretzi Mayo</td>
+                        <td><span class="badge bg-info">Pending</span></td>
+                        <td class="text-center">
+                            <ul class="d-flex list-unstyled mb-0 justify-content-center">
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file-text" title="pdf"></i></a></li>
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file" title="excel"></i></a></li>
+
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>01/01/2022</td>
+                        <td>
+                            Automatic Fare collection
+                            system
+                        </td>
+                        <td>01/01/2022</td>
+                        <td>31/12/2022</td>
+                        <td>Carl Henson</td>
+                        <td><span class="badge bg-success">Completed</span></td>
+                        <td class="text-center">
+                            <ul class="d-flex list-unstyled mb-0 justify-content-center">
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file-text" title="pdf"></i></a></li>
+                                <li class="me-2"><a href="#"><i class="link-icon" data-feather="file" title="excel"></i></a></li>
+
+                            </ul>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace RemoteSensingProject.Controllers
+{
+    public class EmployeeController : Controller
+    {
+        // GET: Employee
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+        public ActionResult Add_Project()
+        {
+            return View();
+        }
+
+        public ActionResult Project_List()
+        {
+            return View();
+        }
+
+        public ActionResult Assigned_Project()
+        {
+            return View();
+        }
+        public ActionResult Approved_Project()
+        {
+            return View();
+        }
+        public ActionResult Weekly_Update_Project()
+        {
+            return View();
+        }
+
+        public ActionResult Update_Project_Stage()
+        {
+            return View();
+        }
+
+        public ActionResult Add_Expenses()
+        {
+            return View();
+        }
+        public ActionResult Min_Of_Meeting()
+        {
+            return View();
+        }
+
+        public ActionResult Meeting_Conclusion()
+        {
+            return View();
+        }
+        public ActionResult Meetings()
+        {
+            return View();
+        }
+
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
+
+        public ActionResult Notice()
+        {
+            return View();
+        }
+
+        public ActionResult All_Project_Report()
+        {
+            return View();
+        }
+
+        public ActionResult Pending_Project_Report()
+        {
+            return View();
+        }
+
+        public ActionResult Complete_Project_Report()
+        {
+            return View();
+        }
+
+
+    }
+}

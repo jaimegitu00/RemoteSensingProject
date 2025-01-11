@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Generate_Notice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: #444;
+        line-height: 13px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-2 text-success">Send Notice To Project Manager</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        <span>Project Name. :- <label style="color: #029e9d">Project</label></span> ||
+                        <span>Project Manager :- <label style="color: #029e9d">Mr. Shuresh Kumar</label></span> ||
+                        <span>Completion Date :- <label style="color: #029e9d">12/12/2024</label></span>
+                    </div>
+                </div>
+                <hr />
+                <form class="forms-sample">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <label for="upload" class="form-label">Project Name</label>
+                                <select class="form-select form-select-lg">
+                                    <option selected>--Select Project--</option>
+                                    <option value="1">Project1</option>
+                                    <option value="2">Project2</option>
+                                    <option value="3">Project3</option>
+                                </select>
+                        </div> 
+                        <div class="col-lg-6 mb-3">
+                            <label for="upload" class="form-label">Attachment</label>
+                            <input class="form-control" type="file" id="upload">
+                        </div>
+                       
+                    </div>
+                  
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <label for="description" class="form-label"> Write Notice</label>
+                    <textarea class="form-control form-control-sm" name="tinymce" id="tinymceExample" rows="10" placeholder=""></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary"><i class="link-icon" data-feather="plus"></i>Send Notice</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

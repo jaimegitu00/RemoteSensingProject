@@ -1,0 +1,242 @@
+﻿
+@{
+    ViewBag.Title = "Update_Project_Stage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@*<nav class="page-breadcrumb d-flex align-items-center justify-content-between">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item active" aria-current="page">Project Stages Status Update</li>
+        </ol>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addslider"><i class="link-icon" data-feather="plus"></i> Add Weekly Status</button>
+    </nav>*@
+@*<div class="search-box p-4 bg-white rounded mb-3 box-shadow">
+        <form class="forms-sample">
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <h5>Employee Lists</h5>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" placeholder="Search by employee name" class="form-control">
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <select class="form-select form-select-lg">
+                        <option selected>Department</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>*@
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Project Stages Status Update </span>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="dataTableExample" class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Stage</th>
+                                <th>Key</th>
+                                <th>Pdf Document</th>
+                                <th>Completion Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start">Stage 1</td>
+                                <td>Project Initiation</td>
+                                <td>
+                                    <a href="#"><span>Document</span> <i class="fa-regular fa-file-pdf"></i></a>
+                                </td>
+                                <td>30/09/2024</td>
+                                <td><span class="badge bg-success">Completed</span></td>
+                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#viewStatusModal"><i class="link-icon" data-feather="eye"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">Stage 2</td>
+                                <td>Project Planing</td>
+                                <td>
+                                    <a href="#"><span>Document</span> <i class="fa-regular fa-file-pdf"></i></a>
+                                </td>
+                                <td>30/10/2024</td>
+                                <td><span class="badge bg-danger">Delay by 10 Days</span></td>
+                                <td>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#addslider"><i class="link-icon" data-feather="edit"></i></a>
+
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#viewDelayStatusModal"><i class="link-icon" data-feather="eye"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">Stage 3</td>
+                                <td>Project Execution</td>
+                                <td>
+                                    <a href="#"><span>Document</span> <i class="fa-regular fa-file-pdf"></i></a>
+                                </td>
+                                <td>30/11/2024</td>
+                                <td><span class="badge bg-info">Pending</span></td>
+                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#addslider"><i class="link-icon" data-feather="edit"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">Stage 4</td>
+                                <td>Project Monitoring and controlling</td>
+                                <td>
+                                    <a href="#"><span>Document</span> <i class="fa-regular fa-file-pdf"></i></a>
+                                </td>
+                                <td>30/12/2024</td>
+                                <td><span class="badge bg-info">Pending</span></td>
+                                <td>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#addslider"><i class="link-icon" data-feather="edit"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addslider" tabindex="-1" aria-labelledby="addslider" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center text-light">
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <h5 class="modal-title float-start" id="exampleModalLabel">Add Weekly Status</h5>
+            </div>
+            <div class="modal-body">
+                <form class="forms-sample" id="statusForm">
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status">
+                            <option value="">Select Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="delayed">Delayed</option>
+                        </select>
+                    </div>
+
+                    <div id="completedFields" class="d-none">
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">Comment</label>
+                            <textarea class="form-control form-control-sm" name="tinymce" id="tinymceExample" rows="10" placeholder="Project Description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="completion" class="form-label">Completion in %</label>
+                            <input type="number" class="form-control" id="completion" placeholder="Enter Completion Percentage" min="0" max="100">
+                        </div>
+                        <div class="mb-3">
+                            <label for="upload" class="form-label">Upload Document</label>
+                            <input class="form-control" type="file" id="upload">
+                        </div>
+                    </div>
+
+                    <div id="delayedFields" class="d-none">
+                        <div class="mb-3">
+                            <label for="delayReason" class="form-label">Reason for Delay</label>
+                            <textarea class="form-control form-control-sm" name="delayReason" id="delayReason" rows="4" placeholder="Enter Reason for Delay"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="upload" class="form-label">Upload Document</label>
+                            <input class="form-control" type="file" id="upload">
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary"><i class="link-icon" data-feather="plus"></i> Add Status</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewStatusModal" tabindex="-1" aria-labelledby="viewStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center text-white">
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <h5 class="modal-title float-start" id="viewStatusModalLabel">View Detail</h5>
+            </div>
+            <div class="modal-body">
+                <div id="viewCompletedFields">
+                    <h6>Comment:</h6>
+                    <p>This project aims to develop an innovative mobile app that enhances daily productivity by integrating task management, calendar scheduling, and reminder functionalities.</p>
+                    <hr />
+                    <h6>Completion Percentage:</h6>
+                    <p>10%</p>
+                    <hr />
+
+                    <h6>Document:</h6>
+                    <p>
+                        <a href="#" aria-label="Download PDF">
+                            <i class="fa-regular fa-file-pdf"></i> Download Document
+                        </a>
+                    </p>
+                </div>
+            </div>            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewDelayStatusModal" tabindex="-1" aria-labelledby="viewStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center text-white">
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                <h5 class="modal-title float-start" id="viewStatusModalLabel">View Detail</h5>
+            </div>
+            <div class="modal-body">
+                <div id="viewCompletedFields">
+                    <h6>Reason:</h6>
+                    <p>This project aims to develop an innovative mobile app that enhances daily productivity by integrating task management, calendar scheduling, and reminder functionalities.</p>
+                    <hr />
+
+
+                    <h6>Document:</h6>
+                    <p>
+                        <a href="#" aria-label="Download PDF">
+                            <i class="fa-regular fa-file-pdf"></i> Download Document
+                        </a>
+                    </p>
+                </div>
+            </div>            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('status').addEventListener('change', function () {
+        const completedFields = document.getElementById('completedFields');
+        const delayedFields = document.getElementById('delayedFields');
+
+        if (this.value === 'completed') {
+            completedFields.classList.remove('d-none');
+            delayedFields.classList.add('d-none');
+        } else if (this.value === 'delayed') {
+            delayedFields.classList.remove('d-none');
+            completedFields.classList.add('d-none');
+        } else {
+            completedFields.classList.add('d-none');
+            delayedFields.classList.add('d-none');
+        }
+    });
+
+</script>
+
+
