@@ -1,0 +1,175 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Remote & Sensing - Login</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/loginAssets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .main {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="main">
+        <section class="sign-in">
+                <div class="container">
+                    <div class="signin-content">
+                        <div class="signin-image">
+                            <figure><img src="~/loginAssets/images/signin-image.jpg" alt="sing up image"></figure>
+                            @*<a href="#" class="signup-image-link">Create an account</a>*@
+                        </div>
+
+                        <div class="signin-form">
+                            <div style="margin-bottom:50px;">
+                                <img src="~/assets/images/macreel.png" alt="logo" class="w-50 h-50" style="height: 50px;">
+                                <img src="~/assets/images/remote_sensing_logo.jfif" height="75" width="75">
+                            </div>
+                            <form method="POST" class="register-form" id="login-form">
+                                <div class="form-group">
+                                    <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="username" id="username" placeholder="Your UserName" autocomplete="off" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="password" name="password" id="password" placeholder="Password" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                                </div>
+                                <div class="form-group form-button">
+                                    <input type="submit" name="signin" id="btnlogin" class="form-submit" value="Log in" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div>
+    <!-- Container end -->
+    <script>
+
+        $("#login-form").on("submit",function () {
+
+
+            if ($("#username").val().trim() == "" || $("#username").val().trim().indexOf("\"") > -1 || $("#username").val().trim().indexOf("'") > -1) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Enter user name Correctly!',
+                    footer: 'JetSet',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                }).then((result) => {
+                    $("#email").focus();
+                });
+                return false;
+            }
+
+
+            if ($("#password").val().trim() == "" || $("#password").val().trim().indexOf("\"") > -1 || $("#password").val().trim().indexOf("'") > -1) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Enter Password Correctly!',
+                    footer: 'JetSet',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                }).then((result) => {
+                    $("#password").focus();
+                });
+                return false;
+            }
+            var formdata = $(this).serialize();
+            Swal.fire({
+                title: 'Please wait!',
+                html: 'We are validating your details',
+                timer: 200000000,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+
+
+
+            $.ajax({
+                async: true,
+                url: "/login/AuthoriseLogin",
+                type: 'POST',
+                data: formdata,
+                success: function (data) {
+                    debugger
+                    if (data.status) {
+                        window.location.href = data.url;
+                        Swal.fire({
+                            title: "Successfully !",
+                            text: res.message,
+                            icon: "success"
+                        })
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            html: '<p style="font-size: 17px;">' + data.message + '</p>',
+                            returnFocus: true,
+                            returnFocus: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                return false;
+                            }
+                        })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    Swal.fire({
+                        icon: 'error',
+                        html: '<p style="font-size: 17px;">An Error Occured try again later or contact website administration.</p>',
+                        returnFocus: true,
+                        returnFocus: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            return false;
+
+                        }
+                    })
+
+                },
+                complete: function () {
+                }
+            });
+
+            return false;
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -153,12 +153,16 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin\main.cs" />
-    <Compile Include="Models\demo.cs" />
+    <Compile Include="Models\DataFactory.cs" />
+    <Compile Include="Models\LoginManager\LoginServices.cs" />
+    <Compile Include="Models\LoginManager\main.cs" />
     <Compile Include="Models\ProjectManager\main.cs" />
+    <Compile Include="Models\RoleAuthorization.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -842,6 +846,9 @@
     <Content Include="Views\Employee\Update_Project_Stage.cshtml" />
     <Content Include="Views\Employee\Weekly_Update_Project.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Shared\_adminLayout.cshtml" />
+    <Content Include="Views\Shared\_employeeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

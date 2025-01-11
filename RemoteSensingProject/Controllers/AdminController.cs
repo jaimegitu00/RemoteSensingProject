@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace RemoteSensingProject.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class AdminController : Controller
     {
         // GET: Admin
